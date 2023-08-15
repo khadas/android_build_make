@@ -51,9 +51,13 @@ endif
 PRODUCT_SYSTEM_SERVER_JARS := \
     com.android.location.provider \
     services
-
+ifeq ($(CAMERA_SUPPORT_VIRTUAL),true)
+PRODUCT_COPY_FILES += \
+    hardware/rockchip/camera_aidl/libdata_bridge/public.libraries.txt:system/etc/public.libraries.txt
+else
 PRODUCT_COPY_FILES += \
     system/core/rootdir/etc/public.libraries.android.txt:system/etc/public.libraries.txt
+endif
 
 # Enable boot.oat filtering of compiled classes to reduce boot.oat size. b/28026683
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
