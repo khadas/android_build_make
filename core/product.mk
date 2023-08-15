@@ -47,6 +47,8 @@ _product_list_vars += PRODUCT_PACKAGES_ARM64
 _product_list_vars += PRODUCT_PACKAGES_DEBUG_JAVA_COVERAGE
 _product_list_vars += PRODUCT_PACKAGES_ENG
 _product_list_vars += PRODUCT_PACKAGES_TESTS
+# Packages remove for Rockchip
+_product_list_vars += PRODUCT_REMOVE_PACKAGES
 
 # The device that this product maps to.
 _product_single_value_vars += PRODUCT_DEVICE

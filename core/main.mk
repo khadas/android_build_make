@@ -1264,7 +1264,7 @@ endef
 # Name resolution for LOCAL_REQUIRED_MODULES:
 #   See the select-bitness-of-required-modules definition.
 # $(1): product makefile
-
+$(warning PRODUCT_REMOVE_PACKAGES = $(PRODUCT_REMOVE_PACKAGES))
 define product-installed-files
   $(eval _pif_modules := \
     $(call get-product-var,$(1),PRODUCT_PACKAGES) \
@@ -1279,6 +1279,8 @@ define product-installed-files
   $(eval ### Filter out the overridden packages and executables before doing expansion) \
   $(eval _pif_overrides := $(call module-overrides,$(_pif_modules))) \
   $(eval _pif_modules := $(filter-out $(_pif_overrides), $(_pif_modules))) \
+  $(eval _pif_removes := $(call get-product-var,$(1),PRODUCT_REMOVE_PACKAGES)) \
+  $(eval _pif_modules := $(filter-out $(_pif_removes), $(_pif_modules))) \
   $(eval ### Resolve the :32 :64 module name) \
   $(eval _pif_modules := $(sort $(call resolve-bitness-for-modules,TARGET,$(_pif_modules)))) \
   $(call expand-required-modules,_pif_modules,$(_pif_modules),$(_pif_overrides)) \
