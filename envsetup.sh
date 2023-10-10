@@ -463,7 +463,7 @@ function chooseproduct()
     if [ "x$TARGET_PRODUCT" != x ] ; then
         default_value=$TARGET_PRODUCT
     else
-        default_value=aosp_arm
+        default_value=kvim3-userdebug
     fi
 
     export TARGET_BUILD_APPS=
@@ -603,7 +603,7 @@ function lunch()
         answer=$1
     else
         print_lunch_menu
-        echo -n "Which would you like? [aosp_arm-eng] "
+        echo -n "Which would you like? [kvim3-userdebug] "
         read answer
     fi
 
@@ -611,7 +611,7 @@ function lunch()
 
     if [ -z "$answer" ]
     then
-        selection=aosp_arm-eng
+        selection=kvim3-userdebug
     elif (echo -n $answer | grep -q -e "^[0-9][0-9]*$")
     then
         local choices=($(TARGET_BUILD_APPS= get_build_var COMMON_LUNCH_CHOICES))
