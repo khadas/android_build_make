@@ -352,6 +352,9 @@ function set_lunch_paths()
     unset TARGET_BOARD_PLATFORM_EBOOK
     export TARGET_BOARD_PLATFORM_EBOOK=$(get_build_var BUILD_WITH_RK_EBOOK)
 
+    unset BOARD_USES_HWC_PROXY_SERVICE
+    export BOARD_USES_HWC_PROXY_SERVICE=$(get_build_var BOARD_USES_HWC_PROXY_SERVICE)
+
     # Finally, set PATH
     export PATH=$ANDROID_LUNCH_BUILD_PATHS:$PATH
 }
