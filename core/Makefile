@@ -1544,6 +1544,7 @@ INSTALLED_TRUST_TARGET := $(strip $(wildcard u-boot/trust.img))
 endif
 
 INSTALLED_EBOOK_LOGO_TARGET := $(strip $(wildcard $(TARGET_DEVICE_DIR)/ota/logo.img))
+INSTALLED_EBOOK_WAVEFORM_TARGET := $(strip $(wildcard $(TARGET_DEVICE_DIR)/ota/waveform.img))
 
 .PHONY: notice_files
 
@@ -6115,6 +6116,13 @@ ifeq ($(INSTALLED_EBOOK_LOGO_TARGET),)
 else
 	$(hide) mkdir -p $(zip_root)/IMAGES
 	$(hide) cp $(INSTALLED_EBOOK_LOGO_TARGET) $(zip_root)/IMAGES/logo.img
+endif
+
+ifeq ($(INSTALLED_EBOOK_WAVEFORM_TARGET),)
+	$(info No waveform.img to otapackage)
+else
+	$(hide) mkdir -p $(zip_root)/IMAGES
+	$(hide) cp $(INSTALLED_EBOOK_WAVEFORM_TARGET) $(zip_root)/IMAGES/waveform.img
 endif
 
 ifneq ($(PRODUCT_SYSTEM_BASE_FS_PATH),)
