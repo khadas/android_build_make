@@ -355,6 +355,9 @@ function set_lunch_paths()
     unset BOARD_USES_HWC_PROXY_SERVICE
     export BOARD_USES_HWC_PROXY_SERVICE=$(get_build_var BOARD_USES_HWC_PROXY_SERVICE)
 
+    unset HDMI_PORT_TYPE
+    export HDMI_PORT_TYPE=$(get_build_var HDMI_PORT_TYPE)
+
     # Finally, set PATH
     export PATH=$ANDROID_LUNCH_BUILD_PATHS:$PATH
 }
