@@ -6077,7 +6077,8 @@ ifeq ($(INSTALLED_LOADER_TARGET),)
 	$(info No RK Loader for TARGET_DEVICE $(TARGET_DEVICE) to otapackage)
 else
 	$(info cp RK Loader:$(TARGET_DEVICE) to otapackage)
-	$(hide) cp $(INSTALLED_LOADER_TARGET) $(zip_root)/RKLoader.bin
+	$(hide) mkdir -p $(zip_root)/IMAGES
+	$(hide) cp $(INSTALLED_LOADER_TARGET) $(zip_root)/IMAGES/RKLoader.bin
 endif
 ifeq ($(INSTALLED_UBOOT_TARGET),)
 	$(info No uboot for uboot/uboot.img to otapackage)
